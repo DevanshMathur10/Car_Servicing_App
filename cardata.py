@@ -39,4 +39,3 @@ for i in carslist:
   c.execute(add_last_name, data_last_name)
 con.commit()
 con.close()
-
