@@ -43,10 +43,9 @@ pass_box.grid(row=2,column=1)
 sendbtn=Button(frame,text="SEND OTP",command=lambda: sendpass(str(email_box.get())))
 sendbtn.grid(row=1,column=1,columnspan=2,padx=10,pady=5,ipadx=50)
 
-email_str=str(email_box.get())
-
+"""
 slideshow=Frame(frame)
-"""slideshow.grid(row=5,column=0,columnspan=2)
+slideshow.grid(row=5,column=0,columnspan=2)
 
 myimg1=Image.open("C:/Users/dr_de/Documents/VS/EL PROJ/MIDSEMPROJ/images/img (1).jpg")
 myimg2=Image.open("C:/Users/dr_de/Documents/VS/EL PROJ/MIDSEMPROJ/images/img (2).jpg")
@@ -114,4 +113,3 @@ checkbtn.grid(row=3,column=1,columnspan=2,padx=10,pady=5,ipadx=45)
 
 con.close()
 root.mainloop()
- 
