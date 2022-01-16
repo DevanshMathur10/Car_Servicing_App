@@ -19,5 +19,5 @@ def sendpass(emailget):
     with smtplib.SMTP_SSL("smtp.gmail.com",465) as server:
         server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
         server.send_message(message)
-    print("password sent")
+
 
