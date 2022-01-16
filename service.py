@@ -1,3 +1,5 @@
+import loginwindow
+#this runs the main file from here
 import mysql.connector as sql
 from tkinter import *
 import re
@@ -105,7 +107,7 @@ def servicingwindow():
         cosstr=re.sub("[()[\],]","",str(cos))
         
         cost=Label(frame1,text="The cost for your service is ₹ "+cosstr+" .",font=("Book Antiqua",30),background='#7f4ca6')
-        cost.grid(row=6,column=0,columnspan=2,sticky=W+E) 
+        cost.grid(row=7,column=0,columnspan=2,sticky=W+E) 
         cost.forget()
 
         con.close()
@@ -130,13 +132,7 @@ def servicingwindow():
     licenseno_box=Entry(frame1,width=35,borderwidth=2)
     licenseno_box.grid(row=4,column=1,padx=10)
     em_box=Entry(frame1,width=35,borderwidth=2,fg='#696969')
-    em_box.insert(0,'Enter your email here for the receipt')
-    em_box.grid(row=7,column=0,columnspan=2,pady=(3,10))
-
-    def temp_text(e):
-        em_box.delete(0,"end")
-
-    em_box.bind("<FocusIn>", temp_text)
+    em_box.insert(0,loginwindow.email_box.get())
 
     def saverecord():
         global frec
@@ -183,17 +179,18 @@ def servicingwindow():
 
         con.close()
         root2.destroy()
+        loginwindow.root.destroy()
 
         with smtplib.SMTP_SSL("smtp.gmail.com",465) as server:
             server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
             server.send_message(message)
 
     submitbtn=Button(frame1,text="SEND FOR SERVICE",command=saverecord)
-    submitbtn.grid(row=5,column=0,columnspan=2,padx=10,pady=5,ipadx=32,sticky=W+E)
+    submitbtn.grid(row=6,column=0,columnspan=2,padx=10,pady=5,ipadx=32,sticky=W+E)
 
     con.close()
+    loginwindow.root.quit()
     root2.mainloop()
 
 #con.close()
-servicingwindow()
- 
+#servicingwindow()
