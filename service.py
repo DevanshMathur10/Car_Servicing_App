@@ -1,5 +1,3 @@
-import loginwindow
-#this runs the main file from here
 import mysql.connector as sql
 from tkinter import *
 import re
@@ -29,7 +27,7 @@ CREATE TABLE services(
 """
 #c.execute(TABLES["cars"])
 
-def servicingwindow():
+def servicingwindow(entry_value):
     root2=Toplevel()
     root2.title("SERVICING")
     root2.geometry("650x300")
@@ -131,11 +129,8 @@ def servicingwindow():
     sername_box.grid(row=3,column=1)
     licenseno_box=Entry(frame1,width=35,borderwidth=2)
     licenseno_box.grid(row=4,column=1,padx=10)
-    em_box=Entry(frame1,width=35,borderwidth=2,fg='#696969')
-    em_box.insert(0,loginwindow.email_box.get())
 
     def saverecord():
-        global frec
         con=sql.connect(user=os.environ.get('SQLNAME'),password=os.environ.get('SQLPASS'),host=os.environ.get('SQLHOST'),database="automotives")
         c=con.cursor()
         
@@ -174,12 +169,11 @@ def servicingwindow():
         message=EmailMessage()
         message['Subject']=" RECEIPT FOR SERVICE "
         message['From']=EMAIL_ADDRESS
-        message['To']=str(em_box.get())
+        message['To']=str(entry_value)
         message.set_content(body)
 
         con.close()
         root2.destroy()
-        loginwindow.root.destroy()
 
         with smtplib.SMTP_SSL("smtp.gmail.com",465) as server:
             server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
@@ -189,7 +183,6 @@ def servicingwindow():
     submitbtn.grid(row=6,column=0,columnspan=2,padx=10,pady=5,ipadx=32,sticky=W+E)
 
     con.close()
-    loginwindow.root.quit()
     root2.mainloop()
 
 #con.close()
