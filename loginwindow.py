@@ -103,7 +103,8 @@ def submitpass():
     if pass_box.get()==p:
         passshow=Label(frame,text=" CORRECT OTP ",background="#2E0063",fg='white', font=('arial', 9))
         passshow.grid(row=4,column=0,columnspan=2,padx=8)
-        servicingwindow(str(email_box.get()))
+        servicingwindow(str(email_box.get()),root)
+        
     else:
         passshow=Label(frame,text="INCORRECT OTP",background="#2E0063",fg='white', font=('arial', 9))
         passshow.grid(row=4,column=0,columnspan=2,padx=8)
