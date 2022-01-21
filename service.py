@@ -27,7 +27,7 @@ CREATE TABLE services(
 """
 #c.execute(TABLES["cars"])
 
-def servicingwindow(entry_value):
+def servicingwindow(entry_value,rootdes):
     root2=Toplevel()
     root2.title("SERVICING")
     root2.geometry("650x300")
@@ -174,6 +174,7 @@ def servicingwindow(entry_value):
 
         con.close()
         root2.destroy()
+        rootdes.destroy()
 
         with smtplib.SMTP_SSL("smtp.gmail.com",465) as server:
             server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
