@@ -6,7 +6,7 @@ from email.message import EmailMessage
 EMAIL_ADDRESS=os.environ.get('PYMAIL')
 EMAIL_PASSWORD=os.environ.get('PYPASS')
 
-p=str(secrets.token_hex(8))
+p=str(secrets.token_hex(3))
 def sendpass(emailget):
     
     body=" "+p
